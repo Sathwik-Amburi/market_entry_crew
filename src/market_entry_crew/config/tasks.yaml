@@ -1,0 +1,101 @@
+market_research:
+  description: >
+    Conduct a thorough research about {topic}.
+    Perform market size analysis, growth trends, and customer segmentation.
+    Utilize business analysis frameworks such as SWOT, PESTLE, and Porter’s Five Forces
+    to evaluate market opportunities and risks.
+    Ensure all insights are data-driven and actionable.
+  expected_output: >
+    A detailed market research report containing:
+      - Market size and growth projections
+      - Customer segments and demographics
+      - SWOT analysis
+      - PESTLE analysis
+      - Porter’s Five Forces analysis
+      - Identification of key market opportunities and risks
+  agent: market_expert
+
+competitor_analysis:
+  description: >
+    Analyze the competitive landscape for {topic}.
+    Identify key competitors, their market positions, strengths, and weaknesses.
+    Conduct SWOT analysis for each major competitor.
+    Assess competitors' strategies, product offerings, pricing, distribution channels, and customer base.
+    Provide insights into competitors' market share and growth.
+  expected_output: >
+    A comprehensive competitor analysis report including:
+      - List of key competitors
+      - SWOT analysis for each competitor
+      - Comparison of product offerings and pricing strategies
+      - Evaluation of competitors' distribution channels
+      - Market share and growth analysis
+      - Identification of competitors' strengths and weaknesses
+  agent: competitor_expert
+
+product_analysis:
+  description: >
+    Evaluate the {company_name} {topic} products for market fit.
+    Assess product features, benefits, and performance against market needs.
+    Identify target customer segments and analyze how products meet their preferences.
+    Conduct competitive differentiation analysis to highlight unique selling propositions.
+    Recommend improvements or adaptations to enhance product-market fit.
+  expected_output: >
+    An in-depth product analysis report containing:
+      - Detailed evaluation of product features and benefits
+      - Analysis of product performance in the market
+      - Identification of target customer segments
+      - Assessment of how products meet customer needs and preferences
+      - Competitive differentiation and unique selling propositions
+      - Recommendations for product improvements or adaptations
+  agent: product_expert
+
+country_analysis:
+  description: >
+    Provide localized insights into the economic, regulatory, cultural, and social factors
+    influencing the market entry strategy for {topic} in India, USA, Brazil, and Mexico.
+    Analyze GDP, inflation rates, purchasing power, and income distribution for each country.
+    Summarize local laws, trade regulations, and compliance requirements relevant to market entry.
+    Examine consumer behavior, cultural preferences, and societal norms unique to each market.
+    Assess transportation networks, supply chain feasibility, and technology infrastructure.
+    Evaluate political stability and identify potential geopolitical risks.
+    For countries outside India, USA, Brazil, and Mexico, indicate that the analysis is not aligned with the company's current strategic priorities.
+  expected_output: >
+    Country-specific analysis reports for India, USA, Brazil, and Mexico, each including:
+      - Economic indicators (GDP, inflation rates, purchasing power)
+      - Regulatory and legal insights (laws, trade regulations, compliance requirements)
+      - Cultural and social factors (consumer behavior, cultural preferences)
+      - Infrastructure and logistics assessment (transportation, supply chain, technology)
+      - Political stability and geopolitical risks
+      - Opportunities and challenges specific to each country
+  agent: country_expert
+
+company_analysis:
+  description: >
+    Assess the {company_name}'s internal capabilities, resources, and strategic objectives
+    to determine readiness for entering the {topic} market.
+    Evaluate strengths, weaknesses, resources, and core competencies.
+    Identify Unique Selling Propositions (USPs) that differentiate the company.
+    Analyze organizational structure, financial capacity, and operational scalability.
+    Ensure market entry strategies align with the company’s mission, vision, and long-term goals.
+    Assess the ability to scale operations and meet market-specific requirements.
+    Propose mitigation strategies to overcome operational challenges.
+  expected_output: >
+    A comprehensive company analysis report including:
+      - Evaluation of strengths, weaknesses, resources, and core competencies
+      - Identification of Unique Selling Propositions (USPs)
+      - Analysis of organizational structure and financial capacity
+      - Assessment of operational scalability and feasibility
+      - Alignment of market entry strategies with mission and vision
+      - Mitigation strategies for operational challenges
+  agent: company_expert
+
+reporting_task:
+  description: >
+    Review all completed analyses and compile them into a comprehensive market entry strategy report for {topic} for {company_name}.
+    Ensure the report is well-structured, detailed, and contains all relevant information.
+    Include sections on market research, competitor analysis, product analysis, country analysis, and company analysis.
+    Present the information in a clear, concise, and actionable manner.
+  expected_output: >
+    A fully fledged report with the main topics, each with a full section of information.
+    Formatted as markdown without '```'
+  agent: reporting_analyst
