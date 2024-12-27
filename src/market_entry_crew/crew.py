@@ -1,5 +1,5 @@
 from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
+from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_kickoff
 from crewai_tools import SerperDevTool
 
 # If you want to run a snippet of code before or after the crew starts, 
@@ -9,6 +9,16 @@ from crewai_tools import SerperDevTool
 @CrewBase
 class MarketEntryCrew():
 	"""MarketEntryCrew crew"""
+
+	@before_kickoff
+	def before_kickoff_function(self, inputs):
+		print(f"Before kickoff function with inputs: {inputs}")
+		return inputs
+	
+	@after_kickoff
+	def after_kickoff_function(self, results):
+		print(f"After kickoff function with outputs: {results}")
+		return results
 
 	# Learn more about YAML configuration files here:
 	# Agents: https://docs.crewai.com/concepts/agents#yaml-configuration-recommended
@@ -63,7 +73,7 @@ class MarketEntryCrew():
 		return Agent(
 			config=self.agents_config['reporting_analyst'],
 			verbose=True,
-			tools=[SerperDevTool()]
+			tools=[]
 		)
 
 	# To learn more about structured task outputs, 
