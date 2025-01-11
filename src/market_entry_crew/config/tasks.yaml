@@ -1,35 +1,54 @@
 market_research:
   description: >
-    Conduct a thorough research about {topic}.
+    Conduct a thorough research about {topic} in the space and defense industry.
     Perform market size analysis, growth trends, and customer segmentation.
     Utilize business analysis frameworks such as SWOT, PESTLE, and Porter’s Five Forces
     to evaluate market opportunities and risks.
+    Leverage structured and credible data sources including market and industry research reports,
+    government and international publications, and business case studies.
     Ensure all insights are data-driven and actionable.
   expected_output: >
     A detailed market research report containing:
-      - Market size and growth projections
-      - Customer segments and demographics
-      - SWOT analysis
-      - PESTLE analysis
-      - Porter’s Five Forces analysis
-      - Identification of key market opportunities and risks
+      - Overview: Brief summary of the market evaluation and strategic potential.
+      - Market Dynamics: Key trends in the space and defense sectors, including demand drivers and market size.
+      - Industry Insights: Detailed analysis of technological, financial, and geopolitical factors shaping the market.
+      - Strategic Opportunities: Targeted recommendations for partnerships, investments, and market entry strategies.
+      - Risk Assessment: Detailed identification and mitigation of risks.
+      - Recommendations: Actionable steps to optimize market entry or expansion strategies.
+      - Conclusion: High-level summary of findings and strategic next steps.
   agent: market_expert
 
 competitor_analysis:
   description: >
-    Analyze the competitive landscape for {topic}.
-    Identify key competitors, their market positions, strengths, and weaknesses.
-    Conduct SWOT analysis for each major competitor.
-    Assess competitors' strategies, product offerings, pricing, distribution channels, and customer base.
-    Provide insights into competitors' market share and growth.
+    Conduct a thorough analysis of the competitive landscape for {topic}.
+    This includes:
+      - Identifying major players and emerging competitors in each target market.
+      - Categorizing competitors by scale (global, regional, or local) and assessing their market share.
+      - Performing SWOT analysis to evaluate competitors' strengths, weaknesses, opportunities, and threats.
+      - Analyzing competitors' product/service offerings, pricing strategies, distribution channels, and customer base.
+      - Monitoring competitors' marketing, branding, and promotional strategies.
+      - Tracking innovations, technological advancements, and partnerships within the competitive space.
+      - Comparing competitors' revenue, growth rate, profitability, and operational efficiency.
+      - Benchmarking customer satisfaction and loyalty indicators, if available.
+      - Identifying potential threats such as market saturation or price wars.
+      - Highlighting gaps or weaknesses in competitors' offerings that the company can exploit.
+      - Proposing actionable strategies for differentiation and strategic positioning based on the analysis.
   expected_output: >
-    A comprehensive competitor analysis report including:
-      - List of key competitors
-      - SWOT analysis for each competitor
-      - Comparison of product offerings and pricing strategies
-      - Evaluation of competitors' distribution channels
-      - Market share and growth analysis
-      - Identification of competitors' strengths and weaknesses
+    A comprehensive competitor analysis report that includes:
+      - Overview: A brief summary of the competitive landscape.
+      - Competitor Insights:
+          - Detailed findings on each major competitor, including strengths, weaknesses, and strategies.
+      - Benchmarking:
+          - Comparisons of key performance metrics such as revenue, growth rate, profitability, and operational efficiency.
+          - Assessment against industry standards where applicable.
+      - Threats and Opportunities:
+          - Identification of potential threats posed by competitors.
+          - Highlighting exploitable gaps or weaknesses in competitors' offerings.
+      - Recommendations:
+          - Actionable strategies for differentiation and strategic positioning.
+          - Suggestions for leveraging identified opportunities to gain a competitive advantage.
+      - Conclusion:
+          - High-level summary reinforcing key findings and strategic recommendations.
   agent: competitor_expert
 
 product_analysis:
@@ -41,52 +60,79 @@ product_analysis:
     Recommend improvements or adaptations to enhance product-market fit.
   expected_output: >
     An in-depth product analysis report containing:
-      - Detailed evaluation of product features and benefits
-      - Analysis of product performance in the market
-      - Identification of target customer segments
-      - Assessment of how products meet customer needs and preferences
-      - Competitive differentiation and unique selling propositions
-      - Recommendations for product improvements or adaptations
+      - Overview: Brief summary of the evaluation of the given product.
+      - Product Analysis:
+          - Insights into features, benefits, and target customer segments.
+      - Market Fit:
+          - Assessment of alignment with specific market needs and norms.
+      - Competitive Differentiation:
+          - Analysis of strengths, gaps, and opportunities.
+      - Recommendations:
+          - Actionable steps to improve market positioning.
+      - Conclusion:
+          - High-level summary of findings and next steps.
   agent: product_expert
-
 country_analysis:
   description: >
-    Provide localized insights into the economic, regulatory, cultural, and social factors
+    Provide localized insights into the economic, regulatory, political, and social factors
     influencing the market entry strategy for {topic} in India, USA, Brazil, and Mexico.
-    Analyze GDP, inflation rates, purchasing power, and income distribution for each country.
+    Analyze economic indicators such as GDP trends, inflation rates, purchasing power, and income distribution for each country.
     Summarize local laws, trade regulations, and compliance requirements relevant to market entry.
     Examine consumer behavior, cultural preferences, and societal norms unique to each market.
     Assess transportation networks, supply chain feasibility, and technology infrastructure.
     Evaluate political stability and identify potential geopolitical risks.
     For countries outside India, USA, Brazil, and Mexico, indicate that the analysis is not aligned with the company's current strategic priorities.
   expected_output: >
-    Country-specific analysis reports for India, USA, Brazil, and Mexico, each including:
-      - Economic indicators (GDP, inflation rates, purchasing power)
-      - Regulatory and legal insights (laws, trade regulations, compliance requirements)
-      - Cultural and social factors (consumer behavior, cultural preferences)
-      - Infrastructure and logistics assessment (transportation, supply chain, technology)
-      - Political stability and geopolitical risks
-      - Opportunities and challenges specific to each country
+    A comprehensive country analysis report that includes:
+      - Overview: High-level summary of the market environment in India, USA, Brazil, and Mexico.
+      - Key Insights:
+          - Economic indicators (GDP trends, inflation rates, purchasing power, income distribution)
+          - Regulatory and legal insights (local laws, trade regulations, compliance requirements)
+          - Political factors (government priorities, political stability, geopolitical risks)
+          - Social and cultural factors (consumer behavior, cultural preferences, societal norms)
+          - Infrastructure and logistics assessment (transportation networks, supply chain feasibility, technology infrastructure)
+      - Opportunities:
+          - Highlight market opportunities based on the analysis for each country.
+      - Risks:
+          - Identify challenges relevant to market entry in each country.
+      - Recommendations:
+          - Provide actionable strategies tailored to the company’s goals and market specifics for each country.
+      - Conclusion:
+          - Summarize the market's fit and feasibility for strategic entry in each country.
+      - Non-Aligned Countries:
+          - Statement indicating that analysis for countries outside India, USA, Brazil, and Mexico is not available as it does not align with the company's current strategic priorities.
   agent: country_expert
 
 company_analysis:
   description: >
-    Assess the {company_name}'s internal capabilities, resources, and strategic objectives
-    to determine readiness for entering the {topic} market.
-    Evaluate strengths, weaknesses, resources, and core competencies.
-    Identify Unique Selling Propositions (USPs) that differentiate the company.
-    Analyze organizational structure, financial capacity, and operational scalability.
-    Ensure market entry strategies align with the company’s mission, vision, and long-term goals.
-    Assess the ability to scale operations and meet market-specific requirements.
-    Propose mitigation strategies to overcome operational challenges.
+    Conduct a thorough analysis of {company_name}'s internal capabilities, resources, and strategic objectives
+    to evaluate readiness for entering the {topic} market. This includes:
+      - Assessing strengths, weaknesses, resources, and core competencies.
+      - Identifying Unique Selling Propositions (USPs) that differentiate the company.
+      - Analyzing organizational structure, financial capacity, and operational scalability.
+      - Ensuring that market entry strategies align with the company’s mission, vision, and long-term goals.
+      - Evaluating how new opportunities integrate with the existing portfolio and strategic roadmap.
+      - Assessing the ability to scale operations, manage supply chains, and meet market-specific requirements.
+      - Addressing challenges such as resource limitations, infrastructure gaps, and compliance risks.
+      - Proposing mitigation strategies to overcome identified operational challenges.
   expected_output: >
-    A comprehensive company analysis report including:
-      - Evaluation of strengths, weaknesses, resources, and core competencies
-      - Identification of Unique Selling Propositions (USPs)
-      - Analysis of organizational structure and financial capacity
-      - Assessment of operational scalability and feasibility
-      - Alignment of market entry strategies with mission and vision
-      - Mitigation strategies for operational challenges
+    A comprehensive company analysis report that includes:
+      - Overview: A brief summary of the analysis.
+      - Key Findings:
+          - Evaluation of strengths, weaknesses, resources, and core competencies.
+          - Identification of Unique Selling Propositions (USPs).
+          - Analysis of organizational structure and financial capacity.
+          - Assessment of operational scalability and feasibility.
+          - Alignment of market entry strategies with mission and vision.
+          - Integration of new opportunities with the existing portfolio.
+      - Recommendations:
+          - Actionable strategies aligned with the company’s strategic objectives and capabilities.
+          - Opportunities for competitive advantage.
+      - Risks and Mitigations:
+          - Identification of potential challenges.
+          - Proposed solutions and mitigation strategies.
+      - Conclusion:
+          - High-level summary reinforcing strategic fit and feasibility.
   agent: company_expert
 
 reporting_task:
@@ -96,6 +142,42 @@ reporting_task:
     Include sections on market research, competitor analysis, product analysis, country analysis, and company analysis.
     Present the information in a clear, concise, and actionable manner.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
+    Output Report: Market Entry Strategy for [Product Name]
+      - Overview 
+        - Executive Summary 
+          - Objective: 
+          - Product Overview: 
+          - Key Insights: 
+          - Recommendation: 
+        - Product Overview
+          - Product Description: 
+          - Target Market: 
+          - Current Market Presence (only if applicable): 
+        - Competitive Landscape
+          - Key Competitors: 
+          - Market Trends: 
+        - Country Recommendations
+          - Recommended Country/Multiple Countries:
+          - Country Overview: 
+          - Reasoning for Recommendation: 
+          - Risk Considerations: 
+        - SWOT Analysis 
+          - Strengths: 
+          - Weaknesses: 
+          - Opportunities: 
+          - Threats: 
+        - Financial Considerations
+        - Conclusion 
+          - Best Market for Entry: 
+          - Market Entry Strategy: 
+          - Risk Considerations: 
+          - Next Steps:
+  context:
+    [
+      market_research,
+      competitor_analysis,
+      product_analysis,
+      country_analysis,
+      company_analysis,
+    ]
   agent: reporting_analyst

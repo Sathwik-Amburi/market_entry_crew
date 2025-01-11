@@ -117,7 +117,7 @@ class MarketEntryCrew():
 	def reporting_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['reporting_task'],
-			output_file='output/report.md'
+			output_file='output/report.md',
 		)
 
 	@crew
@@ -131,5 +131,7 @@ class MarketEntryCrew():
 			tasks=self.tasks, # Automatically created by the @task decorator
 			process=Process.sequential,
 			verbose=True,
+			planning=True,
+			planning_llm="gpt-4o"
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
