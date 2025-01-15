@@ -174,10 +174,10 @@ reporting_task:
           - Next Steps:
   context:
     [
-      market_research,
-      competitor_analysis,
-      product_analysis,
-      country_analysis,
-      company_analysis,
+      "market_research",
+      "competitor_analysis",
+      "product_analysis",
+      "country_analysis",
+      "company_analysis",
     ]
   agent: reporting_analyst

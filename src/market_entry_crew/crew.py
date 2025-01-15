@@ -1,6 +1,7 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_kickoff
 from crewai_tools import SerperDevTool
+from crewai_tools import PDFSearchTool
 
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -33,7 +34,7 @@ class MarketEntryCrew():
 		return Agent(
 			config=self.agents_config['market_expert'],
 			verbose=True,
-			tools=[SerperDevTool()],
+			tools=[SerperDevTool(), PDFSearchTool()],
 		)
 	
 	@agent
@@ -41,7 +42,7 @@ class MarketEntryCrew():
 		return Agent(
 			config=self.agents_config['company_expert'],
 			verbose=True,
-			tools=[SerperDevTool()]
+			tools=[SerperDevTool(),PDFSearchTool()]
 		)
 	
 	@agent
@@ -49,7 +50,7 @@ class MarketEntryCrew():
 		return Agent(
 			config=self.agents_config['competitor_expert'],
 			verbose=True,
-			tools=[SerperDevTool()]
+			tools=[SerperDevTool(),PDFSearchTool()]
 		)
 	
 	@agent 
@@ -57,7 +58,7 @@ class MarketEntryCrew():
 		return Agent(
 			config=self.agents_config['country_expert'],
 			verbose=True,
-			tools=[SerperDevTool()]
+			tools=[SerperDevTool(),PDFSearchTool()]
 		)
 	
 	@agent
@@ -65,7 +66,7 @@ class MarketEntryCrew():
 		return Agent(
 			config=self.agents_config['product_expert'],
 			verbose=True,
-			tools=[SerperDevTool()]
+			tools=[SerperDevTool(),PDFSearchTool()]
 		)
 	
 	@agent
