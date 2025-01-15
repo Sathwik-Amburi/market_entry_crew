@@ -1,11 +1,10 @@
 import streamlit as st
-import datetime
 import sys
 import re  # Required for StreamToExpander
 from market_entry_crew.crew import MarketEntryCrew
 
 # Set the page configuration
-st.set_page_config(page_title="Market Entry Assistant", page_icon="📈", layout="wide")
+st.set_page_config(page_title="Market Entry Assistant", page_icon="📢", layout="wide")
 
 
 def icon(emoji: str):
@@ -19,13 +18,11 @@ def icon(emoji: str):
 class StreamToExpander:
     """
     Redirects stdout to a Streamlit expander.
-    This class captures print statements and displays them in an expandable section.
+    This class captures print statements and displays them in an expandable section with color-coded logs.
     """
     def __init__(self, expander):
         self.expander = expander
         self.buffer = []
-        self.colors = ['red', 'green', 'blue', 'orange']  # Optional: Define a list of colors
-        self.color_index = 0  # Initialize color index
 
     def write(self, data):
         if data.strip() == "":
@@ -34,33 +31,56 @@ class StreamToExpander:
         # Filter out ANSI escape codes using a regular expression
         cleaned_data = re.sub(r'\x1B\[[0-9;]*[mK]', '', data)
 
-        # Optionally handle task-specific messages
-        task_match_object = re.search(r'"task"\s*:\s*"(.*?)"', cleaned_data, re.IGNORECASE)
-        task_match_input = re.search(r'task\s*:\s*([^\n]*)', cleaned_data, re.IGNORECASE)
-        task_value = None
-        if task_match_object:
-            task_value = task_match_object.group(1)
-        elif task_match_input:
-            task_value = task_match_input.group(1).strip()
+        # Split the data into lines to process individually
+        lines = cleaned_data.split('\n')
+        for line in lines:
+            styled_line = self.style_log_line(line)
+            if styled_line:
+                self.buffer.append(styled_line)
+            else:
+                self.buffer.append(line)
 
-        if task_value:
-            st.toast(":robot_face: " + task_value)
-
-        # Append the cleaned data to the buffer
-        self.buffer.append(cleaned_data)
-
-        # If there's a newline in the data, update the expander
-        if "\n" in data:
-            # Combine the buffer into a single string
-            combined_text = ''.join(self.buffer)
-            # Display the combined text in the expander
-            self.expander.markdown(combined_text, unsafe_allow_html=True)
-            # Clear the buffer
-            self.buffer = []
+        # Update the expander with the styled content
+        combined_text = '<br>'.join(self.buffer)
+        self.expander.markdown(combined_text, unsafe_allow_html=True)
+        self.buffer = []
 
     def flush(self):
         """Dummy flush method to comply with the file-like interface."""
         pass
+
+    def style_log_line(self, line):
+        """
+        Applies styling to specific parts of the log line.
+        - Agent: Blue color
+        - Thought: Green color
+        - Tool Output: Orange color
+        - Other lines remain default
+        """
+        # Define styles
+        styles = {
+            'Agent': 'color: #1E90FF; font-size: 14px;',       # DodgerBlue
+            'Thought': 'color: #32CD32; font-size: 14px;',     # LimeGreen
+            'Tool Output': 'color: #FFA500; font-size: 14px;'  # Orange
+        }
+
+        # Regex patterns for matching
+        patterns = {
+            'Agent': r'(Agent\s*:\s*)(.*)',
+            'Thought': r'(Thought\s*:\s*)(.*)',
+            'Tool Output': r'(Tool Output\s*:\s*)(.*)'
+        }
+
+        for key, pattern in patterns.items():
+            match = re.match(pattern, line, re.IGNORECASE)
+            if match:
+                label, content = match.groups()
+                # Apply styling to the label
+                styled_label = f'<span style="{styles[key]}">{label}</span><span style="font-size: 14px;">{content}</span>'
+                return styled_label
+
+        # If no pattern matches, return the original line
+        return line
 
 
 class MarketEntryApp:
@@ -85,8 +105,8 @@ class MarketEntryApp:
 
 def main():
     # Display the icon and header
-    icon("📈")
-    st.title("📈 Market Entry Assistant")
+    icon("📢")
+    st.title("📢 Market Entry Assistant")
     st.subheader("Let AI agents assist you in planning your market entry strategy!")
 
     # Sidebar for user inputs
@@ -104,7 +124,6 @@ def main():
             submitted = st.form_submit_button("Submit")
 
         st.divider()
-
     # If the form is submitted, run the crew
     if submitted:
         if not topic or not company_name:
@@ -114,7 +133,7 @@ def main():
             with st.spinner("🤖 **Agents at work...**"):
                 try:
                     # Create an expander to display the agent process logs
-                    expander = st.expander("Agents Process Logs", expanded=True)
+                    expander = st.expander("Agent Process Logs", expanded=True)
                     # Redirect stdout to capture print statements
                     sys.stdout = StreamToExpander(expander)
 
